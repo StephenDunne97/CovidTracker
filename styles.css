@@ -1,0 +1,12 @@
+p {
+    color:red;
+}
+.main{
+    text-align: center;
+}
+.country-list{
+    position:absolute;
+    float: left;
+    text-align: center;
+    width: 250px;
+}

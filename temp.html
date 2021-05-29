@@ -1,0 +1,35 @@
+        var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+        };
+
+function getData() {
+            fetch("https://api.covid19api.com/countries", requestOptions)
+            .then(response => response.json())
+            .then(countries => console.log(countries))
+            .catch(error => console.log('error', error));
+        };
+
+        showCountry = country => {
+            const countryDiv = document.querySelector('#country-div');
+            country.forEach(country => {
+                const countryElement = document.createElement('p');
+                countryElement.innerText = `Country Name: ${country.country}`;
+                countryDiv.append(countryElement);
+            })
+        }
+
+function rickandmorty() {
+            fetch(`https://rickandmortyapi.com/api/character/`)
+            .then(response => response.json())
+            .then(characters => showCharacters(characters.results));
+        };
+
+        showCharacters = characters => {
+            const charactersDiv = document.querySelector('#country-div');
+            characters.forEach(character => {
+                const characterElement = document.createElement('p');
+                characterElement.innerText = `Character Name: ${character.name}`;
+                charactersDiv.append(characterElement);
+            });
+        }
