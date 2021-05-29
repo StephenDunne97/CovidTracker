@@ -12,6 +12,10 @@ function popCountryList() { // Fxn to get list of countries
 
 function extractCountryData(countries){ // Fxn to parse country array 
     const countryDiv = document.querySelector('#country-list');
+    countries.sort(function(a,b){ 
+        var x = a.Country < b.Country? -1:1; 
+        return x; 
+    });
     countries.forEach(country => {
         const countryElement = document.createElement(`li`); // Create a line item element
         countryElement.classList.add("list-group-item"); // Apply class for styling
@@ -39,10 +43,10 @@ function populateDataButton(countrySlug, countryName){ // Changes button data
     countryDataButton.innerText = (`Get ${countryName} data`);
     countryDataButton.setAttribute("slug",countrySlug) // Slug is attribute used to change API call
 }
-
+// https://api.covid19api.com/live/country/${slug}/status/confirmed/date/2021-05-28T00:00:00Z
 function getCountryData(slug){
     console.log("SLUG:", slug);
-    fetch(`https://api.covid19api.com/live/country/${slug}/status/confirmed/date/2021-05-28T00:00:00Z`, requestOptions)
+    fetch(`https://api.covid19api.com/total/country/${slug}/status/confirmed`, requestOptions)
     .then(response => response.json())
     .then(countryData => formatCountryData(countryData)) // Countries are returned from API as an array of JSON objects
     .catch(error => console.log('error', error));
@@ -50,13 +54,21 @@ function getCountryData(slug){
 
 function formatCountryData(countryData){
     console.log("Ye boi");
+    var lastItem = countryData.slice(countryData.length - 1);
+    console.log(lastItem);
     const countryDataDiv = document.querySelector('#country-data-div');
     countryDataDiv.innerHTML ="";
-
-    countryData.forEach(entry => {
+    if (lastItem.length != 0){
+        lastItem.forEach(entry => {
+            const countryDataElement = document.createElement(`p`); // Create a line item element
+            countryDataElement.classList.add("p"); // Apply class for styling
+            countryDataElement.innerText = `${entry.Cases}`; // Set text to country name
+            countryDataDiv.append("\n Confirmed cases:", countryDataElement);
+        });    
+    }
+    else{
         const countryDataElement = document.createElement(`p`); // Create a line item element
         countryDataElement.classList.add("p"); // Apply class for styling
-        countryDataElement.innerText = `${entry.Confirmed}`; // Set text to country name
-        countryDataDiv.append("\n Confirmed cases:", countryDataElement);
-    });
+        countryDataDiv.append("No data available for this country.");
+    }
 }
