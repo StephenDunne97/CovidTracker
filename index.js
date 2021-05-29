@@ -36,10 +36,12 @@ function getListItemSlug(){ // Returns the name and slug of the list-item
 function populateDataButton(countrySlug, countryName){ // Changes button data 
     const countryDataButton = document.querySelector('#get-country-data');
     countryDataButton.innerText = (`Get ${countryName} data`);
+    countryDataButton.setAttribute("slug",countrySlug) // Slug is attribute used to change API call
 }
 
-function getCountryData(){
-    fetch("https://api.covid19api.com/countries", requestOptions)
+function getCountryData(slug){
+    console.log("SLUG:", slug);
+    fetch(`https://api.covid19api.com/live/country/${slug}/status/confirmed/date/2021-05-28T00:00:00Z`, requestOptions)
     .then(response => response.json())
     .then(countryData => formatCountryData(countryData)) // Countries are returned from API as an array of JSON objects
     .catch(error => console.log('error', error));
@@ -47,4 +49,11 @@ function getCountryData(){
 
 function formatCountryData(countryData){
     console.log("Ye boi");
+    const countryDataDiv = document.querySelector('#country-data-div');
+    countryData.forEach(entry => {
+        const countryDataElement = document.createElement(`p`); // Create a line item element
+        countryDataElement.classList.add("p"); // Apply class for styling
+        countryDataElement.innerText = `${entry.Confirmed}`; // Set text to country name
+        countryDataDiv.append(countryDataElement);
+    });
 }
