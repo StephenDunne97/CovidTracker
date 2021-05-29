@@ -17,6 +17,7 @@ function extractCountryData(countries){ // Fxn to parse country array
         countryElement.classList.add("list-group-item"); // Apply class for styling
         countryElement.innerText = `${country.Country}`; // Set text to country name
         countryElement.id = `${country.Slug}`;
+        
         countryDiv.append(countryElement);
     });
 }
@@ -50,10 +51,12 @@ function getCountryData(slug){
 function formatCountryData(countryData){
     console.log("Ye boi");
     const countryDataDiv = document.querySelector('#country-data-div');
+    countryDataDiv.innerHTML ="";
+
     countryData.forEach(entry => {
         const countryDataElement = document.createElement(`p`); // Create a line item element
         countryDataElement.classList.add("p"); // Apply class for styling
         countryDataElement.innerText = `${entry.Confirmed}`; // Set text to country name
-        countryDataDiv.append(countryDataElement);
+        countryDataDiv.append("\n Confirmed cases:", countryDataElement);
     });
 }
