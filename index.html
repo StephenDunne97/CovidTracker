@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>COVID Tracker</title>
   <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Covid Tracker</a>
+            <a class="navbar-brand" href="#">COVID-19 Case Tracker</a>
             <button type="button">Something</button>
   </nav>
 
@@ -15,15 +15,15 @@
 </head>
 
 <body onload="popCountryList()" class="body"> 
-     <div id="country-list-div" class="country-list">
+     
+    <div id="country-list-div" class="country-list">
         <ul id ="country-list" class="list-group" onclick="getListItemSlug()">
         <li class="list-group-item">Example</li>
         </ul>
     </div>
 
-    <div class="main">
-        <p>Hello world<p>
-        <div id="country-data-div">
+    <div class="data-div">
+        <div id="country-data-div" class="container">
             Country Data Div
         </div>
         <button id="get-country-data" slug="NULL" type="button" onclick="getCountryData(this.getAttribute('slug'))">Country</button>

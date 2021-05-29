@@ -1,14 +1,22 @@
-p {
-    color:red;
+.body{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(155, 155, 155, 0.685), rgb(80, 80, 80));
+    background-attachment: fixed;
 }
-.main{
+.data-div{
     text-align: center;
+    margin-top: 1%;
+    margin-left: 20.5%;
+    margin-right: .5%;
+    height: 90%;
+    background-color: aqua;
 }
 .country-list{
     position:absolute;
     float: left;
     text-align: center;
-    width: 250px;
+    width: 20%;
 }
 .list-group{
     overflow:scroll;
@@ -16,15 +24,13 @@ p {
     overflow-x: hidden;
 }
 .list-group-item{
-    background-color:lightslategray !important;
+    background-color:rgb(58, 58, 58) !important;
     color:white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:x-large;
     max-width: 40pc;
 }
-
-.body{
-    height: auto;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.623), rgb(194, 194, 194));
-    background-attachment: fixed;
+.country-data-div{
+    background-color: brown;
+    padding-left: 0cm;
 }
