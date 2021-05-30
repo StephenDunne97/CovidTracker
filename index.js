@@ -21,7 +21,7 @@ function initPopGlobal() {
 
 function popGlobal(summaryData){
     var summary = summaryData.Global;
-    const countryDataDiv = document.querySelector('#country-data-div');
+    const countryDataDiv = document.querySelector('#country-data-centre');
     countryDataDiv.innerHTML ="";
     const countryDataElement = document.createElement(`p`); // Create a line item element
     countryDataElement.classList.add("p-data"); // Apply class for styling
@@ -69,7 +69,7 @@ function getCountryData(slug){
     // Get confirmed cases
     fetch(`https://api.covid19api.com/total/country/${slug}/status/confirmed`, requestOptions)
     .then(response => response.json())
-    .then(countryData => formatCountryData(countryData)) // Countries are returned from API as an array of JSON objects
+    .then(countryData => formatCountryData(countryData, slug)) // Countries are returned from API as an array of JSON objects
     .catch(error => console.log('error', error));
 
     // Get recovered cases 
@@ -87,18 +87,38 @@ function getCountryData(slug){
     */
 }
 
-function formatCountryData(countryData){
+function formatCountryData(countryData, slug){
     console.log("Ye boi");
     var lastItem = countryData.slice(countryData.length - 1);
     console.log(lastItem);
-    const countryDataDiv = document.querySelector('#country-data-div');
-    countryDataDiv.innerHTML ="";
+    const countryDataDivHeader = document.querySelector('#country-data-header');
+    const countryDataDivCentre = document.querySelector('#country-data-centre');
+    const countryDataDivFooter = document.querySelector('#country-data-footer');
+    countryDataDivHeader.innerHTML ="";
+    countryDataDivCentre.innerHTML ="";
+    countryDataDivFooter.innerHTML ="";
     if (lastItem.length != 0){
         lastItem.forEach(entry => {
+            // Populate Header
+            const countryHeaderElement = document.createElement(`p`); // Create a line item element
+            countryHeaderElement.classList.add("p-data"); // Apply class for styling
+            countryHeaderElement.innerText = `Presenting data for: ${slug}`; // Set text to country name
+            countryDataDivHeader.append(countryHeaderElement);
+            
+            // Populate Centre 
             const countryDataElement = document.createElement(`p`); // Create a line item element
             countryDataElement.classList.add("p-data"); // Apply class for styling
             countryDataElement.innerText = `Confirmed cases: ${entry.Cases}`; // Set text to country name
-            countryDataDiv.append(countryDataElement);
+            countryDataDivCentre.append(countryDataElement);
+
+            // Populate Footer
+            var date = new Date();
+            date.setDate(date.getDate() - 1);
+            console.log(date);
+            const countryFooterElement = document.createElement(`p`); // Create a line item element
+            countryFooterElement.classList.add("p-data"); // Apply class for styling
+            countryFooterElement.innerText = `Last updated: ${date.toDateString().slice(0,10)}`; // Set text to country name
+            countryDataDivFooter.append(countryFooterElement);
         });    
     }
     else{

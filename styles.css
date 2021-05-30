@@ -52,6 +52,11 @@
     vertical-align: top;
     border: 2px solid red;
 }
+.data-div-centre{
+    display: inline-block;
+    vertical-align: bottom;
+    border: 2px solid orange;
+}
 .data-div-footer{
     display: inline-block;
     vertical-align: bottom;
