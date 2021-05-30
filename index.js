@@ -12,7 +12,7 @@ function popCountryList() { // Fxn to get list of countries
 
 function extractCountryData(countries){ // Fxn to parse country array 
     const countryDiv = document.querySelector('#country-list');
-    countries.sort(function(a,b){ 
+    countries.sort(function(a,b){ // Sorts in alphabetical order
         var x = a.Country < b.Country? -1:1; 
         return x; 
     });
@@ -43,7 +43,7 @@ function populateDataButton(countrySlug, countryName){ // Changes button data
     countryDataButton.innerText = (`Get ${countryName} data`);
     countryDataButton.setAttribute("slug",countrySlug) // Slug is attribute used to change API call
 }
-// https://api.covid19api.com/live/country/${slug}/status/confirmed/date/2021-05-28T00:00:00Z
+
 function getCountryData(slug){
     console.log("SLUG:", slug);
     fetch(`https://api.covid19api.com/total/country/${slug}/status/confirmed`, requestOptions)
@@ -61,9 +61,9 @@ function formatCountryData(countryData){
     if (lastItem.length != 0){
         lastItem.forEach(entry => {
             const countryDataElement = document.createElement(`p`); // Create a line item element
-            countryDataElement.classList.add("p"); // Apply class for styling
-            countryDataElement.innerText = `${entry.Cases}`; // Set text to country name
-            countryDataDiv.append("\n Confirmed cases:", countryDataElement);
+            countryDataElement.classList.add("p-data"); // Apply class for styling
+            countryDataElement.innerText = `Confirmed cases: ${entry.Cases}`; // Set text to country name
+            countryDataDiv.append(countryDataElement);
         });    
     }
     else{

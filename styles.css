@@ -1,3 +1,12 @@
+html, body {
+    height: 100%;
+    flex-direction: column;
+  }
+  
+body > * {
+    flex-shrink: 0;
+}
+
 .body{
     height: 100%;
     width: 100%;
@@ -10,7 +19,8 @@
     margin-left: 20.5%;
     margin-right: .5%;
     height: 90%;
-    background-color: aqua;
+    background-color: white;
+    vertical-align: middle;
 }
 .country-list{
     position:absolute;
@@ -33,4 +43,11 @@
 .country-data-div{
     background-color: brown;
     padding-left: 0cm;
+}
+.p-data{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:xx-large;
+    color: orange;
+    text-align: center;
+    vertical-align: middle;
 }
