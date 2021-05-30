@@ -10,6 +10,26 @@ function populateCountryList() { // Fxn to get list of countries
     .catch(error => console.log('error', error));
 }
 
+function initPopGlobal() {
+    console.log("init");
+    // Get global summary cases
+    fetch(`https://api.covid19api.com/summary`, requestOptions)
+    .then(response => response.json())
+    .then(summaryData => popGlobal(summaryData)) // Countries are returned from API as an array of JSON objects
+    .catch(error => console.log('error', error));
+}
+
+function popGlobal(summaryData){
+    var summary = summaryData.Global;
+    const countryDataDiv = document.querySelector('#country-data-div');
+    countryDataDiv.innerHTML ="";
+    const countryDataElement = document.createElement(`p`); // Create a line item element
+    countryDataElement.classList.add("p-data"); // Apply class for styling
+    countryDataElement.innerText = `Global cases: ${summary.TotalConfirmed}`; // Set text to country name
+    countryDataDiv.append(countryDataElement);
+    
+}
+
 function extractCountryData(countries){ // Fxn to parse country array 
     const countryDiv = document.querySelector('#country-list');
     countries.sort(function(a,b){ // Sorts in alphabetical order
@@ -46,10 +66,25 @@ function populateDataButton(countrySlug, countryName){ // Changes button data
 
 function getCountryData(slug){
     console.log("SLUG:", slug);
+    // Get confirmed cases
     fetch(`https://api.covid19api.com/total/country/${slug}/status/confirmed`, requestOptions)
     .then(response => response.json())
     .then(countryData => formatCountryData(countryData)) // Countries are returned from API as an array of JSON objects
     .catch(error => console.log('error', error));
+
+    // Get recovered cases 
+    /*
+    fetch(`https://api.covid19api.com/total/country/${slug}/status/recovered`, requestOptions)
+    .then(response => response.json())
+    .then(countryData => formatCountryData(countryData)) // Countries are returned from API as an array of JSON objects
+    .catch(error => console.log('error', error));
+
+    // Get death cases 
+    fetch(`https://api.covid19api.com/total/country/${slug}/status/deaths`, requestOptions)
+    .then(response => response.json())
+    .then(countryData => formatCountryData(countryData)) // Countries are returned from API as an array of JSON objects
+    .catch(error => console.log('error', error));
+    */
 }
 
 function formatCountryData(countryData){

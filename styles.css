@@ -47,6 +47,16 @@
     padding-top: 15%;
     padding-bottom: 28%;
 }
+.data-div-header{
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid red;
+}
+.data-div-footer{
+    display: inline-block;
+    vertical-align: bottom;
+    border: 2px solid pink;
+}
 .p-data{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:xx-large;

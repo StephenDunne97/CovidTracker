@@ -16,18 +16,28 @@
 
 </head>
 
-<body onload="populateCountryList()" class="body"> 
+<body onload="populateCountryList(); initPopGlobal();" class="body"> 
     
     <div class ="flex-container">
 
         <div id="country-list-div" class="country-list">
             <ul id ="country-list" class="list-group" onclick="getListItemSlug()">
-            <li class="list-group-item">Example</li>
+            <li class="list-group-item" slug="Global" onclick="initPopGlobal()">Global</li>
             </ul>
         </div>
 
         <div id="country-data-container" class="data-container">
             <div id="country-data-div" class="data-div">
+                <div class="data-div-header">
+                    Hello
+                </div>
+                <div class ="data-div-centre">
+                </div>
+                <div class="data-div-footer">
+                    Hello
+                </div>
+
+
                 Country Data Div
             </div>
             <button id="get-country-data" slug="NULL" type="button" onclick="getCountryData(this.getAttribute('slug'))" class="data-button">Country</button>
