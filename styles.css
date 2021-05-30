@@ -1,48 +1,51 @@
-html, body {
-    height: 100%;
-    flex-direction: column;
-  }
-  
-body > * {
-    flex-shrink: 0;
-}
-
 .body{
     height: 100%;
     width: 100%;
     background-image: linear-gradient(rgba(155, 155, 155, 0.685), rgb(80, 80, 80));
     background-attachment: fixed;
 }
-.data-div{
-    text-align: center;
-    margin-top: 1%;
-    margin-left: 20.5%;
-    margin-right: .5%;
-    height: 90%;
-    background-color: white;
-    vertical-align: middle;
+
+/*Main Container. Children: Country-list, data-container*/
+.flex-container{
+    display: flex;
 }
+/*END*/
+
+/*Country-list container*/
 .country-list{
-    position:absolute;
-    float: left;
+    flex: .35;
+    border: 2px solid lawngreen;
     text-align: center;
     width: 20%;
 }
 .list-group{
     overflow:scroll;
-    max-height: 1000px;
+    max-height: 550px;
     overflow-x: hidden;
 }
 .list-group-item{
     background-color:rgb(58, 58, 58) !important;
     color:white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:x-large;
-    max-width: 40pc;
+    font-size:medium;
+    max-width: 100%;
 }
-.country-data-div{
-    background-color: brown;
-    padding-left: 0cm;
+/*END*/
+
+/*Country data container*/
+.data-container{ 
+    flex: 1;
+    border: 2px solid yellow;
+    text-align: center;
+    width: 20%;
+}
+
+.data-div{
+    background-color: white;
+    border: 2px solid blue;
+    text-align: center;
+    padding-top: 15%;
+    padding-bottom: 28%;
 }
 .p-data{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -51,3 +54,15 @@ body > * {
     text-align: center;
     vertical-align: middle;
 }
+.data-button{
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/*END*/

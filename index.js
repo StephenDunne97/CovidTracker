@@ -3,7 +3,7 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-function popCountryList() { // Fxn to get list of countries
+function populateCountryList() { // Fxn to get list of countries
     fetch("https://api.covid19api.com/countries", requestOptions)
     .then(response => response.json())
     .then(countries => extractCountryData(countries)) // Countries are returned from API as an array of JSON objects

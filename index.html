@@ -2,35 +2,124 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>COVID Tracker</title>
-  <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">COVID-19 Case Tracker</a>
-            <button type="button">Something</button>
-  </nav>
+    <meta charset="utf-8">
+    <title>COVID Tracker</title>
+  
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">COVID-19 Case Tracker</a>
+    </nav>
+    <!-- Scripts & Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script type = "text/javascript" src="index.js"></script>
+    <!-- Scripts & Styles -->
 
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-  <script type = "text/javascript" src="index.js"></script>
 </head>
 
-<body onload="popCountryList()" class="body"> 
-     
-    <div id="country-list-div" class="country-list">
-        <ul id ="country-list" class="list-group" onclick="getListItemSlug()">
-        <li class="list-group-item">Example</li>
-        </ul>
-    </div>
+<body onload="populateCountryList()" class="body"> 
+    
+    <div class ="flex-container">
 
-    <div class="data-div">
-        <div id="country-data-div" class="container">
-            Country Data Div
+        <div id="country-list-div" class="country-list">
+            <ul id ="country-list" class="list-group" onclick="getListItemSlug()">
+            <li class="list-group-item">Example</li>
+            </ul>
         </div>
-        <button id="get-country-data" slug="NULL" type="button" onclick="getCountryData(this.getAttribute('slug'))">Country</button>
+
+        <div id="country-data-container" class="data-container">
+            <div id="country-data-div" class="data-div">
+                Country Data Div
+            </div>
+            <button id="get-country-data" slug="NULL" type="button" onclick="getCountryData(this.getAttribute('slug'))" class="data-button">Country</button>
+        </div>
+
     </div>
 
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Breaker -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        </section>
+        <!-- Section: Breaker -->
+
+        <!-- Section: Links  -->
+        <section class="footer">
+            <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">Description</h6>
+                <p>
+                    Boostrap web application that provides insight into a countries total number of confirmed cases of COVID-19 for the previous day.
+                </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Technology</h6>
+                    <p>
+                        <a href="https://www.w3schools.com/html/html_intro.asp" class="text-reset">HTML</a> <!-- text-reset removes hyperlink blue-->
+                    </p>
+                    <p>
+                        <a href="https://www.w3schools.com/css/css_intro.asp" class="text-reset">CSS</a>
+                    </p>
+                    <p>
+                        <a href="https://www.w3schools.com/whatis/whatis_js.asp" class="text-reset">JavaScript</a>
+                    </p>
+                    <p>
+                        <a href="https://www.w3schools.com/whatis/whatis_bootstrap.asp" class="text-reset">Boostrap</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+                    <p>
+                        <a href="https://www.linkedin.com/in/stephen-dunne-79a32310b/" class="text-reset">My LinkedIn</a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/StephenDunne97" class="text-reset">My GitHub</a>
+                    </p>
+                    <p>
+                        <a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#9739c95f-ef1d-489b-97a9-0a6dfe2f74d8" class="text-reset">COVID-19 API</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p>dunne134@gmail.com</p>
+                    <p>+ 353 086 150 7563</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Signature -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            Developed by
+            <a class="text-reset fw-bold" href="https://www.linkedin.com/in/stephen-dunne-79a32310b/">Stephen Dunne</a>
+        </div>
+        <!-- Signature -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- JQuery & Boostrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <!-- JQuery & Boostrap -->
+
 </body>
 </html>
