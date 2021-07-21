@@ -5,7 +5,8 @@ let requestOptions = {
 
 // Function to dynamically populate the countries list
 async function populateCountryList() {
-    fetch("https://api.covid19api.com/countries", requestOptions)
+    let countriesURL = "https://api.covid19api.com/countries";
+    fetch(countriesURL, requestOptions)
     .then(response => response.json())
     .then(countries => extractCountryData(countries)) // Countries are returned from API as an array of JSON objects
     .catch(error => console.log('Failed to populate countries list.', error));
